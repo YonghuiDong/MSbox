@@ -1,0 +1,35 @@
+#' @title calculate VIP values
+#' @description calculate VIP values using among different samples groups using OPLS.
+#' @param x dataframe
+#' @param Group sample group information
+#' @importFrom utils combn opls
+#' @return a dataframe with vip values
+#' @export
+#' @examples
+#' dat <- as.data.frame(matrix(runif(2*300), ncol = 2, nrow = 300))
+#' myGroup <- rep_len(LETTERS[1:2], 300)
+#' ret <- getOPLSDA(dat, Group = myGroup)
+
+getOPLSDA <- function(x, Group = NULL){
+  cat("\n- Calculating VIP values for sample contrasts...\n")
+  #(1) check input
+  Group <- as.factor(Group)
+  if(is.null(Group)){stop("Please include group information")}
+  if(length(levels(Group)) <= 1){stop("At least two sample groups should be included")}
+  if(length(myGroup) != nrow(dat)){stop("Missing group informaiton detected")}
+
+  #(2) perform OPLS
+  j <- combn(levels(Group), 2)
+  i <- split(1:nrow(x), Group)
+  dfopls <- opls(x, y = Group,
+                 predI = 1,
+                 orthoI = 1,
+                 permI = 500,
+                 crossvalI = min(nrow(x),7),
+                 fig.pdfC = "none",
+                 info.txtC = "none")
+  ret <- dfopls@vipVn
+  return(ret)
+}
+
+
