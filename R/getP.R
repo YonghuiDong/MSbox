@@ -13,18 +13,18 @@
 #' myGroup <- rep_len(LETTERS[1:3], 300)
 #' out <- getP(dat, Group = myGroup)
 
-getP <- function(dat, Group = NULL){
+getP <- function(x, Group = NULL){
   cat("\n- Calculating p-values...\n")
   #(1) check input
-  dat <- as.data.frame(dat) ## here DF class is needed
+  x <- as.data.frame(x) ## here DF class is needed
   Group <- as.factor(Group)
   if(is.null(Group)){stop("Please include group information")}
   if(length(levels(Group)) <= 1){stop("At least two sample groups should be included")}
-  if(length(myGroup) != nrow(dat)){stop("Missing group informaiton detected")}
+  if(length(Group) != nrow(x)){stop("Missing group informaiton detected")}
   #(2) aov
-  response_names <- names(dat)
+  response_names <- names(x)
   form <- as.formula(sprintf("cbind(%s) ~ Group", toString(response_names)))
-  fit <- do.call("aov", list(formula = form, data = quote(dat)))
+  fit <- do.call("aov", list(formula = form, data = quote(x)))
   aov_hack <- fit
   aov_hack[c("coefficients", "fitted.values")] <- NULL
   aov_hack[c("contrasts", "xlevels")] <- NULL
