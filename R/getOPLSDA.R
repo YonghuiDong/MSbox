@@ -16,11 +16,11 @@ getOPLSDA <- function(x, Group = NULL){
   Group <- as.factor(Group)
   if(is.null(Group)){stop("Please include group information")}
   if(length(levels(Group)) <= 1){stop("At least two sample groups should be included")}
-  if(length(myGroup) != nrow(dat)){stop("Missing group informaiton detected")}
+  if(length(Group) != nrow(x)){stop("Missing group informaiton detected")}
 
   #(2) perform OPLS
   n <- levels(Group)
-  dat2 <- cbind.data.frame(dat, Group = Group)
+  dat2 <- cbind.data.frame(x, Group = Group)
   mylist <- combn(n, 2, FUN = function(x) subset(dat2, Group %in% x), simplify = FALSE)
   ## change mylist names
   listnames <- combn(n, 2, simplify = FALSE)
