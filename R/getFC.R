@@ -16,7 +16,7 @@
     Group <- as.factor(Group)
     if(is.null(Group)){stop("Please include group information")}
     if(length(levels(Group)) <= 1){stop("At least two sample groups should be included")}
-    if(length(myGroup) != nrow(dat)){stop("Missing group informaiton detected")}
+    if(length(Group) != nrow(x)){stop("Missing group informaiton detected")}
 
     # calculate FC
     i <- split(1:nrow(x), Group)
