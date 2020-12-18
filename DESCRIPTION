@@ -15,9 +15,9 @@ Imports:
  crayon,
  xml2,
  magrittr,
- ropls
+ ropls,
  stats,
- ggfortify,
+ reshape2,
  ggplot2,
  plotly
 License: GPL-2
