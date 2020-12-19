@@ -1,6 +1,6 @@
 #' @title get p-values
 #' @description get p-values from Post Hoc analysis
-#' @param dat sample ion intensity matrix
+#' @param x sample ion intensity matrix
 #' @param Group sample group information
 #' @importFrom stats as.formula
 #' @importFrom stats formula
