@@ -14,21 +14,25 @@
 #' mySeq <- c(1:10)
 #' out <- viewTIC(dat, Group = myGroup)
 
-viewTIC <- function(x, Group = NULL, Batch = NULL, Seq = NULL){
-  #(1) check input
+viewTIC <- function(x, Group = NULL, Batch = NULL, Seq = NULL, Trans = NULL){
+
+   #(1) check input
   Group <- as.factor(Group)
   if(is.null(Group)){stop("Please include group information")}
   if(is.null(Batch)){Batch = 1}
   if(is.null(Seq)){Seq = 1:nrow(x)}
   if(length(Group) != nrow(x)){stop("Missing group informaiton detected")}
 
-  #(2) view TIC
+  ##(2) transform
+  x[x == 0] <- 1
+  if(toupper(Trans) == "LOG2"){x = log2(x)}
+  if(toupper(Trans) == "LOG10"){x = log10(x)}
+
+  #(3) view TIC
   ## order the data
-  datOrder <- paste(Batch, Seq, Group, sep = "")
+  datOrder <- paste("B", Batch, "S", Seq, "G", Group, sep = "")
   dat2 <- cbind.data.frame(Order = datOrder, x)
   dat2 <- dat2[order(dat2$Order), ]
-  ## get mean line
-  means <- mean(as.numeric(apply(dat2, 1, median)))
   ## reshape data
   dat3 <- suppressMessages({reshape2::melt(dat2)})
   dat3 <- dat3[, -2]
@@ -36,13 +40,11 @@ viewTIC <- function(x, Group = NULL, Batch = NULL, Seq = NULL){
   ## to plot
   p <- ggplot2::ggplot(dat3, aes(x = Sample, y = Intensity, color = Sample)) +
     geom_boxplot() +
-    geom_hline(yintercept = means,
-               linetype = "dotted",
-               color = "black",
-               alpha = 1, size = 0.6) +
     theme_bw() +
     xlab("Sample (in Batch-Seq-Group order)") +
-    theme(legend.position = "none")
+    theme(legend.position = "none",
+          axis.text.x = element_text(angle = 90, hjust = 1))
+
   return(p)
 }
 
