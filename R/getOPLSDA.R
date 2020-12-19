@@ -1,6 +1,6 @@
 #' @title calculate VIP values
 #' @description calculate VIP values using among different samples groups using OPLSDA.
-#' @param x dataframe
+#' @param x sample ion intensity matrix
 #' @param Group sample group information
 #' @importFrom utils combn opls
 #' @return a dataframe with vip values
