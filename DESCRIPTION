@@ -19,6 +19,7 @@ Imports:
  stats,
  reshape2,
  ggplot2,
+ ggfortify,
  plotly
 License: GPL-2
 URL: https://github.com/YonghuiDong/MSbox
