@@ -2,7 +2,7 @@
 % Please edit documentation in R/mz.R
 \name{mz}
 \alias{mz}
-\title{Calculate accurate mass to charge ratio}
+\title{Calculate accurate mass-to-charge ratio}
 \usage{
 mz(m, z, caseSensitive = FALSE)
 }
@@ -11,17 +11,20 @@ mz(m, z, caseSensitive = FALSE)
 
 \item{z}{charge}
 
-\item{caseSensitive}{if case sensitive is `False`, the elements are seperated by numbers.
-for instance, you can write 'c7h7O1', and}
+\item{caseSensitive}{if case sensitive is `FALSE` (default), the elements are seperated by numbers.
+for instance, Carbon dioxyde can be written as 'c1o2' or any combination of the two elements in lower or
+upper cases. However, the number of elements should be clearly stated in the chemical formula. if case
+sensitive is `TRUE`, the elements are seperated by upper case letters. For instance, Carbon dioxyde must
+be written as 'C1O2' or `CO2`. You don't meed to write the number of the element if it is 1.}
 }
 \description{
-Calculate accurate mass to charge ratio (m/z)
+Calculate accurate mass-to-charge ratio (m/z)
 }
 \examples{
- mz('C7H7O1', z = 1)
- mz('C10H6Cl1', z = -1)
- mz('C7h7O4', z = 1) # case insensitive
- mz(c('C7H7O4', 'c1'), z = -1) # vector input
+ mz('C7h7o1', z = 1)
+ mz('C7H7O', z = 1, caseSensitive = TRUE)
+ mz(c('C7H7O4', 'C'), z = -1, caseSensitive = TRUE) # vector input
+ mz(c('c7h7O4', 'c1'), z = -1)
 }
 \author{
 Yonghui Dong
