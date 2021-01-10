@@ -1,11 +1,13 @@
 #' @title view TIC
 #' @description view variations of TIC among samples
-#' @param dat sample ion intensity matrix
+#' @param x sample ion intensity matrix,row sample, column feature.
 #' @param Batch sample batch information. If missing, all the samples will be considered from the same batch
 #' @param Seq sample sequence with each batch. If missing, the Seq will be automatically assigned according to sample order
 #' @param Group sample group information
+#' @param Trans How should data be transformed, "LOG2", "LOG10", or NULL transformation?
 #' @importFrom reshape2 melt
-#' @importFrom ggplot2
+#' @importFrom utils globalVariables
+#' @import ggplot2
 #' @return a box plot
 #' @export
 #' @examples
@@ -14,7 +16,7 @@
 #' mySeq <- c(1:10)
 #' out <- viewTIC(dat, Group = myGroup)
 
-viewTIC <- function(x, Group = NULL, Batch = NULL, Seq = NULL, Trans = NULL){
+viewTIC <- function(x, Group = NULL, Batch = NULL, Seq = NULL, Trans = "none"){
 
    #(1) check input
   Group <- as.factor(Group)

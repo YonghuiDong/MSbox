@@ -4,6 +4,7 @@
 #' @param method normalization method: (1) LBME: linear baseline normalization based on mean values;
 #' (2) LBMD: linear baseline normalization based on median values; (3) PQN: probabilistic quotient normalization.
 #' @return normalized data matrix
+#' @importFrom stats median
 #' @export
 #' @examples
 #' dat <- matrix(runif(100*9), ncol = 100, nrow = 10)
@@ -49,11 +50,10 @@ doNormalization <-function(x, method = NULL){
     df_rank <- apply(x, 2, rank, ties.method = "min")
     df_sorted <- data.frame(apply(x, 2, sort))
     df_mean <- apply(df_sorted, 1, mean)
-
     index_to_mean <- function(my_index, my_mean){
       return(my_mean[my_index])
     }
-    norm.metabo.data <- apply(df_rank, 2, index_to_mean, my_mean=df_mean)
+    norm.metabo.data <- apply(df_rank, 2, index_to_mean, my_mean = df_mean)
     rownames(norm.metabo.data) <- rownames(x)
   }
 

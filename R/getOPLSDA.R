@@ -1,14 +1,15 @@
 #' @title calculate VIP values
 #' @description calculate VIP values using among different samples groups using OPLSDA.
-#' @param x sample ion intensity matrix
+#' @param x sample ion intensity matrix, row sample, column feature.
 #' @param Group sample group information
-#' @importFrom utils combn opls
+#' @importFrom utils combn
+#' @importFrom ropls opls
 #' @return a dataframe with vip values
 #' @export
 #' @examples
 #' dat <- matrix(runif(2*300), ncol = 2, nrow = 300)
 #' myGroup <- rep_len(LETTERS[1:3], 300)
-#' ret <- getOPLSDA(dat, Group = myGroup)
+#' out <- getOPLSDA(dat, Group = myGroup)
 
 getOPLSDA <- function(x, Group = NULL){
   cat("\n- Calculating VIP values...\n")
@@ -31,7 +32,7 @@ getOPLSDA <- function(x, Group = NULL){
                   y = as.character(i$Group),
                   predI = 1,
                   orthoI = 1,
-                  permI = 500,
+                  permI = 10,
                   crossvalI = min(nrow(i), 7),
                   fig.pdfC = "none",
                   info.txtC = "none")

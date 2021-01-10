@@ -1,11 +1,10 @@
 #' @title fast PCA
 #' @description perform PCA from xcms object
 #' @author Yonghui Dong
-#' @param dat sample ion intensity matrix
+#' @param dat sample ion intensity matrix, row sample, column feature.
 #' @param Group sample group information
 #' @param centering centering, default = TRUE
 #' @param scaling scaling method, default is scaling = "none". You can choose "auto" or "pareto"
-#' @param ms2.rm remove MSMS data when it is included.
 #' @param x PCA X axis, default is PC1
 #' @param y PCA Y axis, defult is PC2
 #' @param exclude exclude some classes of samples
@@ -15,10 +14,11 @@
 #' @param scale_group select groups needs to be scaled.
 #' @param scale_factor the scale factor, default = 1.
 #' @param ... other parameters
-#' @importFrom ggplot2 autoplot theme_bw
-#' @import ggfortify
+#' @importFrom ggplot2 theme_bw autoplot
 #' @importFrom graphics abline legend par plot title
 #' @importFrom plotly ggplotly
+#' @importFrom stats prcomp sd
+#' @import ggfortify
 #' @export
 #'@examples
 #' dat <- matrix(runif(2*300), ncol = 2, nrow = 300)

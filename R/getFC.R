@@ -1,6 +1,6 @@
 #' @title calculate fold change
 #' @description calculate fold change among different samples.
-#' @param x sample ion intensity matrix
+#' @param x sample ion intensity matrix, row sample, column feature.
 #' @param Group sample group information
 #' @importFrom utils combn
 #' @return a dataframe with mean values and fold changes

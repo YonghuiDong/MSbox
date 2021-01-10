@@ -1,11 +1,8 @@
 #' @title get p-values
 #' @description get p-values from Post Hoc analysis
-#' @param x sample ion intensity matrix
+#' @param x sample ion intensity matrix, row sample, column feature.
 #' @param Group sample group information
-#' @importFrom stats as.formula
-#' @importFrom stats formula
-#' @importFrom stats terms
-#' @importFrom stats terms.formula
+#' @importFrom stats as.formula TukeyHSD formula terms terms.formula
 #' @return a data frame
 #' @export
 #' @examples

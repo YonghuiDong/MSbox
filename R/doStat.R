@@ -1,6 +1,6 @@
 #' @title Performing statistics
 #' @description performing statistics, including calculating fold change, p-values and VIP values
-#' @param x sample ion intensity matrix
+#' @param x sample ion intensity matrix, row sample, column feature.
 #' @param Group sample group information
 #' @return a dataframe with statistical information
 #' @export

@@ -8,8 +8,10 @@
 #' @importFrom utils URLencode
 #' @export
 #' @examples
+#' \dontrun{
 #' describe('malic acid', "formula")
 #' describe(c('malic acid', 'citric acid', 'tartaric acid'), "smiles")
+#' }
 
 describe <- function(chem, representation = 'formula', info = FALSE) {
 

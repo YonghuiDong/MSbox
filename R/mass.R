@@ -2,15 +2,21 @@
 #' @description calculate accurate molecular mass
 #' @author Yonghui Dong
 #' @param F chemical formula, case insensitive
+#' @param caseSensitive if case sensitive is `FALSE` (default), the elements are seperated by numbers.
+#' for instance, Carbon dioxyde can be written as 'c1o2' or any combination of the two elements in lower or
+#' upper cases. However, the number of elements should be clearly stated in the chemical formula. if case
+#' sensitive is `TRUE`, the elements are seperated by upper case letters. For instance, Carbon dioxyde must
+#' be written as 'C1O2' or `CO2`. You don't meed to write the number of the element if it is 1.
 #' @importFrom stats aggregate
 #' @importFrom crayon cyan bgMagenta
 #' @export
 #' @examples
-#'  mass('C7H6O4')
-#'  mass('c7H6O4') # case insensitive
-#'  mass(c('K1', 'C5H8', 'nA20')) # vector input
+#'  mass('C7h7o1')
+#'  mass('C7H7O', caseSensitive = TRUE)
+#'  mass(c('C7H7O4', 'C'), caseSensitive = TRUE) # vector input
+#'  mass(c('c7h7O4', 'c1'))
 
-mass <- function(F) {
+mass <- function(F, caseSensitive = FALSE) {
 
   #(1) read element data, and find the element with the highest abundance
   element <- as.data.frame(sysdata$element)
@@ -22,12 +28,16 @@ mass <- function(F) {
   #(2) allow the function to a vector of input
   if (length(F) > 1) {
     F = as.list(F)
-    acc_mass <- sapply(F, mass)
+    acc_mass <- sapply(F, mass, caseSensitive = caseSensitive)
     names(acc_mass) <- F
     return(acc_mass)
   }
 
   #(3) main function
+  ## If caseSensitive == T, split the mass formula based on upper case letters and add missing 1.
+  if(isTRUE(caseSensitive)) {
+    F <- gsub("([A-Z][a-z]?)(?!\\d)","\\11", F, perl = TRUE)
+  }
   ## split the mass formula
   v1 <- strsplit(F, "(?<=[A-Za-z])(?=[0-9])|(?<=[0-9])(?=[A-Za-z])", perl = TRUE)[[1]]
   atom <- v1[c(TRUE, FALSE)]
