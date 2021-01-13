@@ -10,7 +10,8 @@ doNormalization(x, method = NULL)
 \item{x}{sample ion intensity matrix}
 
 \item{method}{normalization method: (1) LBME: linear baseline normalization based on mean values;
-(2) LBMD: linear baseline normalization based on median values; (3) PQN: probabilistic quotient normalization.}
+(2) LBMD: linear baseline normalization based on median values; (3) PQN: probabilistic quotient normalization;
+(4) QT: quantile normalization; (5) TIC: total ion current normalization.}
 }
 \value{
 normalized data matrix

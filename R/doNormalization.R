@@ -2,7 +2,8 @@
 #' @description perform normalization
 #' @param x sample ion intensity matrix
 #' @param method normalization method: (1) LBME: linear baseline normalization based on mean values;
-#' (2) LBMD: linear baseline normalization based on median values; (3) PQN: probabilistic quotient normalization.
+#' (2) LBMD: linear baseline normalization based on median values; (3) PQN: probabilistic quotient normalization;
+#' (4) QT: quantile normalization; (5) TIC: total ion current normalization.
 #' @return normalized data matrix
 #' @importFrom stats median
 #' @export
@@ -13,7 +14,7 @@
 doNormalization <-function(x, method = NULL){
   #(1) check input
   if(is.null(method)) {stop("Please select a normalization method")}
-  if (!(toupper(method) %in% c("LBME", "LBMD", "PQN", "QT")))
+  if (!(toupper(method) %in% c("LBME", "LBMD", "PQN", "QT", "TIC")))
   {stop("Invalid normalization method")}
   x[x == 0] <- 1 # make sure that data do not contain any zeros
   x = t(x) # feature in row and sample in column
@@ -55,6 +56,11 @@ doNormalization <-function(x, method = NULL){
     }
     norm.metabo.data <- apply(df_rank, 2, index_to_mean, my_mean = df_mean)
     rownames(norm.metabo.data) <- rownames(x)
+  }
+
+  #(2.5) TIC
+  if(toupper(method) == "TIC"){
+    norm.metabo.data = t(t(x)/colSums(x))
   }
 
   return(t(norm.metabo.data))
