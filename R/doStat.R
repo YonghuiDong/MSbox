@@ -11,10 +11,11 @@
 
 doStat <- function(x, Group = NULL){
   cat("\nPerforming statistics: \n")
+  myCV <- getCV(x, Group = Group)
   myFC <- getFC(x, Group = Group)
   myP <- getP(x, Group = Group)
   myOPLSDA <- getOPLSDA(x, Group = Group)
-  myStat <- cbind(myFC, myP, myOPLSDA)
+  myStat <- cbind(myCV, myFC, myP, myOPLSDA)
   cat("\nStatistical analysis done. \n")
   return(myStat)
 }
