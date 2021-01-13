@@ -7,7 +7,6 @@
 #' @param resultBy show the result by Batch or by Group (default).
 #' @param Trans How should data be transformed, "LOG2", "LOG10", or NULL transformation?
 #' @importFrom reshape2 melt
-#' @importFrom utils globalVariables
 #' @import ggplot2
 #' @return a box plot
 #' @export
@@ -21,6 +20,7 @@
 viewTIC <- function(x, Seq = NULL, Batch = NULL, Group = NULL, Trans = "none", resultBy = "Group"){
 
    #(1) check input
+  value = NULL
   Group <- as.factor(Group)
   if(is.null(Group)){stop("Please include group information")}
   if(is.null(Seq)){Seq = 1:nrow(x)}

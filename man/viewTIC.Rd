@@ -2,30 +2,40 @@
 % Please edit documentation in R/viewTIC.R
 \name{viewTIC}
 \alias{viewTIC}
-\title{view TIC}
+\title{View TIC}
 \usage{
-viewTIC(x, Group = NULL, Batch = NULL, Seq = NULL, Trans = "none")
+viewTIC(
+  x,
+  Seq = NULL,
+  Batch = NULL,
+  Group = NULL,
+  Trans = "none",
+  resultBy = "Group"
+)
 }
 \arguments{
 \item{x}{sample ion intensity matrix,row sample, column feature.}
 
-\item{Group}{sample group information}
+\item{Seq}{sample sequence with each batch. If missing, the Seq will be automatically assigned according to sample order}
 
 \item{Batch}{sample batch information. If missing, all the samples will be considered from the same batch}
 
-\item{Seq}{sample sequence with each batch. If missing, the Seq will be automatically assigned according to sample order}
+\item{Group}{sample group information}
 
 \item{Trans}{How should data be transformed, "LOG2", "LOG10", or NULL transformation?}
+
+\item{resultBy}{show the result by Batch or by Group (default).}
 }
 \value{
 a box plot
 }
 \description{
-view variations of TIC among samples
+View variations of TIC among samples
 }
 \examples{
-dat <- matrix(runif(100*9), ncol = 100, nrow = 10)
-myGroup <- rep_len(LETTERS[1:5], 10)
-mySeq <- c(1:10)
-out <- viewTIC(dat, Group = myGroup)
+dat <- matrix(runif(100*9), ncol = 100, nrow = 27)
+myGroup <- rep_len(LETTERS[1:3], 27)
+myBatch <- rep(1:3, each = 9, times = 1)
+mySeq <- c(1:27)
+out <- viewTIC(dat, Group = myGroup, Batch = myBatch, resultBy = "Batch")
 }
