@@ -25,6 +25,6 @@ getCV <- function(x, Group = NULL){
   sd_int <- sapply(i, function(i){colSd(x[i, ])})
   cv_int <- sd_int/mean_int * 100
   ret <- round(cv_int, 2)
-  colnames(ret) <- paste("CV%_", colnames(cv_int), sep = "")
+  colnames(ret) <- paste("CV_", colnames(cv_int), sep = "")
   return(ret)
 }
