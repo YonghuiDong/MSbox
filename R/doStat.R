@@ -6,16 +6,19 @@
 #' @export
 #' @examples
 #' dat <- matrix(runif(2*300), ncol = 2, nrow = 300)
+#' rownames(dat) <- 1:dim(dat)[1]
 #' myGroup <- rep_len(LETTERS[1:3], 300)
 #' ret <- doStat(dat, Group = myGroup)
 
 doStat <- function(x, Group = NULL){
   cat("\nPerforming statistics: \n")
+  maxSample <- getSname(x)
   myCV <- getCV(x, Group = Group)
   myFC <- getFC(x, Group = Group)
   myP <- getP(x, Group = Group)
   myOPLSDA <- getOPLSDA(x, Group = Group)
-  myStat <- cbind(myCV, myFC, myP, myOPLSDA)
+  myStat <- cbind(maxSample, myFC, myP, myOPLSDA)
   cat("\nStatistical analysis done. \n")
+  rownames(myStat) <- colnames(x)
   return(myStat)
 }
