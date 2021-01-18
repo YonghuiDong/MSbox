@@ -17,7 +17,7 @@ doStat <- function(x, Group = NULL){
   myFC <- getFC(x, Group = Group)
   myP <- getP(x, Group = Group)
   myOPLSDA <- getOPLSDA(x, Group = Group)
-  myStat <- cbind(maxSample, myFC, myP, myOPLSDA)
+  myStat <- cbind(maxSample, myCV, myFC, myP, myOPLSDA)
   cat("\nStatistical analysis done. \n")
   rownames(myStat) <- colnames(x)
   return(myStat)
