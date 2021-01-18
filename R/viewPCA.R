@@ -23,9 +23,9 @@
 #'@examples
 #' dat <- matrix(runif(2*300), ncol = 2, nrow = 300)
 #' Group <- rep_len(LETTERS[1:3], 300)
-#' out <- doPCA(dat, Group = Group)
+#' out <- viewPCA(dat, Group = Group)
 
-doPCA <- function(dat, Group = NULL, centering = T, scaling = "none", x = 1, y = 2,
+viewPCA <- function(dat, Group = NULL, centering = T, scaling = "none", x = 1, y = 2,
                  size = 1.5, exclude = NULL, scale_group = NULL, scale_factor = 1,
                  interactive = T, ...) {
 
