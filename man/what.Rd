@@ -18,6 +18,7 @@ tentative metabolite identification based on m/z value search
 }
 \examples{
  what(133.014, ppm = 10, mode = '-')
+ what(c(133.014, 191.020), ppm = 10, mode = '-')
 }
 \author{
 Yonghui Dong

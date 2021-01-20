@@ -7,6 +7,7 @@
 #' @export
 #' @examples
 #'  what(133.014, ppm = 10, mode = '-')
+#'  what(c(133.014, 191.020), ppm = 10, mode = '-')
 
 what <- function (mz, mode = NULL, ppm = 5) {
 
