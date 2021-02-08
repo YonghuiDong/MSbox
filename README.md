@@ -137,6 +137,7 @@ what(mzs, "-") # multiple m/z values, default ppm = 5
 
 ## Statistics
 -----------------------
+## Basic statistics
 
 1. Find the samples names which contain the max ion intensity/peak area for each mass feature
 
@@ -159,3 +160,32 @@ myGroup <- rep_len(LETTERS[1:3], 300)
 myResult <- doStat(dat, Group = myGroup)
 ```
 
+## 6. PCA plot
+``` r
+# sample data
+dat <- matrix(runif(2*300), ncol = 2, nrow = 300)
+Group <- rep_len(LETTERS[1:3], 300)
+# PCA
+viewPCA(dat, Group = Group, interactive = T) # you can turn on/off interactive plot using interactive = T/F
+```
+
+## 7. View variations of TIC among samples
+
+``` r
+# sample data
+dat <- matrix(runif(100*9), ncol = 100, nrow = 27)
+myGroup <- rep_len(LETTERS[1:3], 27)
+myBatch <- rep(1:3, each = 9, times = 1)
+mySeq <- c(1:27)
+# view TIC
+viewTIC(dat, Group = myGroup, Batch = myBatch, resultBy = "Batch")
+```
+
+## 8. Normalization
+
+Normalization methods include: (1) LBME: linear baseline normalization based on mean values; (2) LBMD: linear baseline normalization based on median values; (3) PQN: probabilistic quotient normalization; (4) QT: quantile normalization; (5) TIC: total ion current normalization.
+
+``` r
+dat <- matrix(runif(100*9), ncol = 100, nrow = 10)
+out <- doNormalization(dat, method = "PQN" )
+```
