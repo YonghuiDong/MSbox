@@ -1,6 +1,6 @@
 # MSbox
 
-MSbox provides a several different tools for MS users
+MSbox provides several different tools for MS users
 
 # Functions
 
