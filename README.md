@@ -26,17 +26,23 @@ describe(c('malic acid', 'citric acid', 'tartaric acid'), representation = "smil
 
 It accepts two types of inputs: 
 
-(1) Standards elemental composition, for instance, C7H6O, C7H6Na. 
-(2) User friendly elemental composition, for instance, c7H6O1, C7H6NA1
+(1) **Standards elemental composition**, for instance, `C7H6O`, `C7H6Na`. Here each element is distinguished by Capital letters, i.e., sodium should be written as Na, not NA, na or nA here. Since there is only one sodium in the formula `C7H7Na`, you don't have to write 1 after `Na`. 
 
+(2) **User friendly elemental composition**, for instance,`c7H6O1`, `C7H6NA1`. Here each element is distinguished by the number of the element, therefore, i.e, sodium can be written as `Na`, `NA` or `na`. But the number the sodium element should be clearlly stated in the formula even if there is only one sodium. 
 
-example:
+example for **User friendly elemental composition**:
 
 ```r
-mass('c7h6O1') # case insensitive: elements are seperated by numbers.
-mass('C7H6O', caseSensitive = T) # case sensitive: elements are seperated by upper case letters. The number of the element can be missing if it is 1.
-mass(c('K1', 'C5H8', 'nA1')) # vector input
-mass(c('K1', 'C5H8', 'Na'), caseSensitive = T) # vector input
+mass("C7H6O", caseSensitive = T)
+mass(c("C7H6O", "C7H6Na"), caseSensitive = T)
+```
+
+example for **User friendly elemental composition**:
+
+```r
+mass("c7h6O1")
+mass(c("c7h6o1", "C7H6NA1"))
+
 ```
 
 4. Calculate exact m/z values
