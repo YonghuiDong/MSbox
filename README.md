@@ -4,13 +4,10 @@ MSbox provides several different tools for MS users
 
 # Functions
 
-######################
+## 1. Small tools
+-----------------------
 
-## 1. Small tool
-
-######################
-
-## 1. Check element isotopes
+### 1. Check element isotopes
 
 examples:
 
@@ -20,7 +17,7 @@ E_iso('Carbon') # element full name, case insensitive
 E_iso('carBon') # element full name, case insensitive
 ```
 
-## 2. Get extra molecular information based on compound name
+### 2. Get extra molecular information based on compound name
 
 If the queried information is not found for a compounds, it will assign "unknown" to that compound information:
 ```r
@@ -28,7 +25,7 @@ describe('malic acid') # get formula by default
 describe(c('malic acid', 'citric acid', 'tartaric acid'), representation = "smiles") # get smiles
 ```
 
-## 3. Calculate monoisitopic mass
+### 3. Calculate monoisitopic mass
 
 It accepts two types of inputs: 
 
@@ -50,7 +47,7 @@ mass("c7h6O1")
 mass(c("c7h6o1", "C7H6NA1")) # vector input
 ```
 
-## 4. Calculate theoretical m/z value
+### 4. Calculate theoretical m/z value
 
 It accepts two types of inputs: 
 
@@ -74,7 +71,7 @@ mz("c7H5o", -1) # [M-H]-, negative ion mode, charge z = 1
 mz(c("c7h6o1", "C7H6NA1"), 1) # vector input
 ```
 
-## 5. Calculate the mass accuracy of measured m/z ppm
+### 5. Calculate the mass accuracy of measured m/z ppm
 
 example:
 
@@ -86,7 +83,7 @@ ppm(155.03384, mz('C7H7O4', z = 1)) # with ion formula
 ```
 
 
-## 6. Calculate isotope labelled molecular mass
+### 6. Calculate isotope labelled molecular mass
 
 example
 
@@ -94,7 +91,7 @@ example
 Iso_mass(F = 'C7H6O4', iso = '[13]C2[2]H3') # Two 13C and three 2H are labled. Case insensitive.
 ```
 
-## 7. Calculate isotope labelled m/z
+### 7. Calculate isotope labelled m/z
 
 example
 
@@ -102,7 +99,7 @@ example
 Iso_mz(F = 'C7H6O4', iso = '[13]C2[2]H3', z = 1) # Two 13C and three 2H are labled. Case insensitive.
 ```
 
-## 8. Check if an m/z value originates from possible contaminant
+### 8. Check if an m/z value originates from possible contaminant
 
 examples
 
@@ -111,7 +108,7 @@ contam(33.0335, ppm = 10, mode = '+')
 contam(44.998, ppm = 10, mode = '-')
 ```
 
-## 9. Calculate common adduct ions in pos or neg ion mode
+### 9. Calculate common adduct ions in pos or neg ion mode
 
 examples
 
@@ -120,7 +117,7 @@ adduct('C1H4', mode = '-') # case insensitive
 adduct('C1H4', mode = '+') # case insensitive
 ```
 
-## 10. Search m/z in HMDB datavase
+### 10. Search m/z in HMDB datavase
 
 ```r
 what(1034.556, mode = "+", ppm = 3) # single m/z value
@@ -129,5 +126,27 @@ mzs <- rep(133.014, 300)
 what(mzs, "-") # multiple m/z values, default ppm = 5
 ```
 
-##################
+## Statistics
+-----------------------
+
+### 1. Find the samples names which contain the max ion intensity/peak area for each mass feature
+
+### 2. Calculate coefficient of variation (CV) for each mass feature among different sample group
+
+### 3. Calculate fold change (FC) for each mass feature among different sample group
+
+### 4. Calculate p-value for each mass feature among different sample group
+
+### 4. Calculate calculate VIP value for each mass feature among different sample group
+
+You can use `Dostat()` function to get above statistical analysis.
+
+``` r
+# sample data
+dat <- matrix(runif(2*300), ncol = 2, nrow = 300)
+rownames(dat) <- 1:dim(dat)[1]
+myGroup <- rep_len(LETTERS[1:3], 300)
+# statistics
+myResult <- doStat(dat, Group = myGroup)
+```
 
