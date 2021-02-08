@@ -44,18 +44,7 @@ mass("c7h6O1")
 mass(c("c7h6o1", "C7H6NA1")) # vector input
 ```
 
-## 4. Calculate exact m/z values
-
-example:
-
-```r
-mz('c7h6O1', z = -1) # case insensitive: elements are seperated by numbers.
-mz('C7H6O', z = -1, caseSensitive = T) # case sensitive: elements are seperated by upper case letters. The number of the element can be missing if it is 1.
-mz(c('C5H8', 'c3h3o1'), z = 1) # vector input
-mz(c('C5H8', 'C3H3O'), z = 1, caseSensitive = T) # vector input
-```
-
-5. Calculate the mass accuracy of measured m/z
+## 4. Calculate theoretical m/z value
 
 It accepts two types of inputs: 
 
@@ -75,11 +64,23 @@ example for **User friendly elemental composition**:
 
 ```r
 mz("c7h7O1") # [M+H]+, positive ion mode, charge z = 1
-mz("C7H5O", -1, caseSensitive = T) # [M-H]-, negative ion mode, charge z = 1
+mz("c7H5o", -1) # [M-H]-, negative ion mode, charge z = 1
 mz(c("c7h6o1", "C7H6NA1"), 1) # vector input
 ```
 
-6. Calculate isotope labelled molecular mass
+## 5. CCalculate the mass accuracy of measured m/z ppm
+
+example:
+
+```r
+ppm(155.03383, 155.03388) # standard way
+ppm(155.03383, .03388) # lazy input when the integer parts of m and t are the same
+ppm(155.03383, .03388, lazy = F) # lazy input disabled
+ppm(155.03384, mz('C7H7O4', z = 1)) # with ion formula
+```
+
+
+## 6. Calculate isotope labelled molecular mass
 
 example
 
@@ -87,7 +88,7 @@ example
 Iso_mass(F = 'C7H6O4', iso = '[13]C2[2]H3') # Two 13C and three 2H are labled. Case insensitive.
 ```
 
-7. Calculate isotope labelled m/z
+## 7. Calculate isotope labelled m/z
 
 example
 
@@ -95,7 +96,7 @@ example
 Iso_mz(F = 'C7H6O4', iso = '[13]C2[2]H3', z = 1) # Two 13C and three 2H are labled. Case insensitive.
 ```
 
-8. Check if an m/z value originates from possible contaminant
+## 8. Check if an m/z value originates from possible contaminant
 
 examples
 
@@ -104,7 +105,7 @@ contam(33.0335, ppm = 10, mode = '+')
 contam(44.998, ppm = 10, mode = '-')
 ```
 
-9. Calculate common adduct ions in pos or neg ion mode
+## 9. Calculate common adduct ions in pos or neg ion mode
 
 examples
 
@@ -113,7 +114,7 @@ adduct('C1H4', mode = '-') # case insensitive
 adduct('C1H4', mode = '+') # case insensitive
 ```
 
-10. Annotate the m/z values according to m/z value matching
+## 10. Search m/z in HMDB datavase
 
 ```r
 what(1034.556, mode = "+", ppm = 3) # single m/z value
