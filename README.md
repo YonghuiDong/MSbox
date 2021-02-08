@@ -4,6 +4,12 @@ MSbox provides several different tools for MS users
 
 # Functions
 
+######################
+
+1. Small tool
+
+######################
+
 ## 1. Check element isotopes
 
 examples:
@@ -68,7 +74,7 @@ mz("c7H5o", -1) # [M-H]-, negative ion mode, charge z = 1
 mz(c("c7h6o1", "C7H6NA1"), 1) # vector input
 ```
 
-## 5. CCalculate the mass accuracy of measured m/z ppm
+## 5. Calculate the mass accuracy of measured m/z ppm
 
 example:
 
@@ -122,3 +128,6 @@ what(1034.556, mode = "+", ppm = 3) # single m/z value
 mzs <- rep(133.014, 300)
 what(mzs, "-") # multiple m/z values, default ppm = 5
 ```
+
+##################
+
