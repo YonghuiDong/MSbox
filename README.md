@@ -1,6 +1,6 @@
 # MSbox
 
-Common mass spectrometry tools for minimalist MS users.
+MSbox provides a several different tools for MS users
 
 # Functions
 
@@ -23,6 +23,12 @@ describe(c('malic acid', 'citric acid', 'tartaric acid'), representation = "smil
 ```
 
 3. Calculate monoisitopic mass
+
+It accepts two types of inputs: 
+
+(1) Standards elemental composition, for instance, C7H6O, C7H6Na. 
+(2) User friendly elemental composition, for instance, c7H6O1, C7H6NA1
+
 
 example:
 
