@@ -4,7 +4,7 @@ MSbox provides several different tools for MS users
 
 # Functions
 
-1. Check element isotopes
+## 1. Check element isotopes
 
 examples:
 
@@ -14,7 +14,7 @@ E_iso('Carbon') # element full name, case insensitive
 E_iso('carBon') # element full name, case insensitive
 ```
 
-2. Get extra molecular information based on compound name
+## 2. Get extra molecular information based on compound name
 
 If the queried information is not found for a compounds, it will assign "unknown" to that compound information:
 ```r
@@ -22,7 +22,7 @@ describe('malic acid') # get formula by default
 describe(c('malic acid', 'citric acid', 'tartaric acid'), representation = "smiles") # get smiles
 ```
 
-3. Calculate monoisitopic mass
+## 3. Calculate monoisitopic mass
 
 It accepts two types of inputs: 
 
@@ -30,22 +30,21 @@ It accepts two types of inputs:
 
 (2) **User friendly elemental composition**, for instance,`c7H6O1`, `C7H6NA1`. Here each element is distinguished by the number of the element, therefore, i.e, sodium can be written as `Na`, `NA` or `na`. But the number the sodium element should be clearlly stated in the formula even if there is only one sodium. 
 
-example for **User friendly elemental composition**:
+example for **Standards elemental composition**:
 
 ```r
 mass("C7H6O", caseSensitive = T)
-mass(c("C7H6O", "C7H6Na"), caseSensitive = T)
+mass(c("C7H6O", "C7H6Na"), caseSensitive = T) # vector input
 ```
 
 example for **User friendly elemental composition**:
 
 ```r
 mass("c7h6O1")
-mass(c("c7h6o1", "C7H6NA1"))
-
+mass(c("c7h6o1", "C7H6NA1")) # vector input
 ```
 
-4. Calculate exact m/z values
+## 4. Calculate exact m/z values
 
 example:
 
@@ -58,13 +57,26 @@ mz(c('C5H8', 'C3H3O'), z = 1, caseSensitive = T) # vector input
 
 5. Calculate the mass accuracy of measured m/z
 
-examples:
+It accepts two types of inputs: 
+
+(1) **Standards elemental composition**, for instance, `C7H6O`, `C7H6Na`. Here each element is distinguished by Capital letters, i.e., sodium should be written as Na, not NA, na or nA here. Since there is only one sodium in the formula `C7H7Na`, you don't have to write 1 after `Na`. 
+
+(2) **User friendly elemental composition**, for instance,`c7H6O1`, `C7H6NA1`. Here each element is distinguished by the number of the element, therefore, i.e, sodium can be written as `Na`, `NA` or `na`. But the number the sodium element should be clearlly stated in the formula even if there is only one sodium. 
+
+example for **Standards elemental composition**
 
 ```r
-ppm(155.03383, 155.03388) # with m/z value
-ppm(155.03383, .03388) # lazy input when the integer parts of m and t are the same
-ppm(155.03383, .03388, lazy = F) # lazy input disabled
-ppm(155.03384, mz('C7H7O4', z = 1)) # with ion formula
+mz("C7H7O", 1, caseSensitive = T) # [M+H]+, positive ion mode, charge z = 1
+mz("C7H5O", -1, caseSensitive = T) # [M-H]-, negative ion mode, charge z = 1
+mz(c("C7H6O", "C7H6Na"), 1, caseSensitive = T) # vector input
+```
+
+example for **User friendly elemental composition**:
+
+```r
+mz("c7h7O1") # [M+H]+, positive ion mode, charge z = 1
+mz("C7H5O", -1, caseSensitive = T) # [M-H]-, negative ion mode, charge z = 1
+mz(c("c7h6o1", "C7H6NA1"), 1) # vector input
 ```
 
 6. Calculate isotope labelled molecular mass
