@@ -129,15 +129,15 @@ what(mzs, "-") # multiple m/z values, default ppm = 5
 ## Statistics
 -----------------------
 
-### 1. Find the samples names which contain the max ion intensity/peak area for each mass feature
+1. Find the samples names which contain the max ion intensity/peak area for each mass feature
 
-### 2. Calculate coefficient of variation (CV) for each mass feature among different sample group
+2. Calculate coefficient of variation (CV) for each mass feature among different sample group
 
-### 3. Calculate fold change (FC) for each mass feature among different sample group
+3. Calculate fold change (FC) for each mass feature among different sample group
 
-### 4. Calculate p-value for each mass feature among different sample group
+4. Calculate p-value for each mass feature among different sample group
 
-### 4. Calculate calculate VIP value for each mass feature among different sample group
+5. Calculate calculate VIP value for each mass feature among different sample group
 
 You can use `Dostat()` function to get above statistical analysis.
 
