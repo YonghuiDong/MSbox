@@ -13,4 +13,4 @@ install.packages('MSbox')
 
 # Usage
 
-Please refer to [wiki page](https://github.com/YonghuiDong/MSbox/wiki) for user manual.
+Please refer to [wiki page](https://github.com/YonghuiDong/MSbox/wiki/Usage) for user manual.
