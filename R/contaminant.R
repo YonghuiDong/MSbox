@@ -9,7 +9,7 @@
 #'  contam(33.0335, ppm = 10, mode = '+')
 #'  contam(44.998, ppm = 10, mode = '-')
 
-contam <- function (mz, ppm = 10, mode = c('+', '-')) {
+contam <- function (mz, mode = NULL, ppm = 10) {
 
   ##(1) input check
   if(is.numeric(mz) == FALSE) {stop("Warning: mass to charge ratio mz shoule be numeric!")}

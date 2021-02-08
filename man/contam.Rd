@@ -4,14 +4,14 @@
 \alias{contam}
 \title{Contaminants in MS}
 \usage{
-contam(mz, ppm = 10, mode = c("+", "-"))
+contam(mz, mode = NULL, ppm = 10)
 }
 \arguments{
 \item{mz}{suspected m/z value}
 
-\item{ppm}{mass tolerance, default value = 10}
-
 \item{mode}{ionization mode, either positive '+' or negative '-'}
+
+\item{ppm}{mass tolerance, default value = 10}
 }
 \description{
 check the possible contaminants

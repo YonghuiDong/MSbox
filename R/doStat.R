@@ -12,7 +12,7 @@
 
 doStat <- function(x, Group = NULL){
   cat("\nPerforming statistics: \n")
-  maxSample <- getSname(x)
+  maxSample <- getMax(x)
   myCV <- getCV(x, Group = Group)
   myFC <- getFC(x, Group = Group)
   myP <- getP(x, Group = Group)
