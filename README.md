@@ -1,4 +1,4 @@
-# MSbox2
+# MSbox
 
 Common mass spectrometry tools for minimalist MS users.
 
