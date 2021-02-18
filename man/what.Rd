@@ -4,7 +4,7 @@
 \alias{what}
 \title{search for m/z in from the idiom metabolomics database}
 \usage{
-what(mz, mode = NULL, ppm = 5)
+what(mz, mode = NULL, ppm = 5, useDB = "HMDB")
 }
 \arguments{
 \item{mz}{m/z values}
@@ -12,13 +12,14 @@ what(mz, mode = NULL, ppm = 5)
 \item{mode}{ionization mode, either positive '+' or negative '-'}
 
 \item{ppm}{mass tolerance, default value = 10}
+
+\item{useDB}{which database to use, HMDB or KEGG? default is HMDB}
 }
 \description{
 tentative metabolite identification based on m/z value search
 }
 \examples{
- what(133.014, ppm = 10, mode = '-')
- what(c(133.014, 191.020), ppm = 10, mode = '-')
+ a = what(133.014, mode = '-', ppm = 10)
 }
 \author{
 Yonghui Dong
