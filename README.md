@@ -126,10 +126,11 @@ adduct('C1H4', mode = '-') # case insensitive
 adduct('C1H4', mode = '+') # case insensitive
 ```
 
-### 10. Search m/z in HMDB database
+### 10. Search m/z in HMDB or KEGG database
 
 ```r
-what(1034.556, mode = "+", ppm = 3) # single m/z value
+what(1034.556, mode = "+", ppm = 3) # single m/z value in HMDB database (default)
+what(1034.556, mode = "+", ppm = 3, useDB = "KEGG") # single m/z value in KEGG database
 
 mzs <- rep(133.014, 300)
 what(mzs, "-") # multiple m/z values, default ppm = 5
