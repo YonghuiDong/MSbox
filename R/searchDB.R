@@ -30,7 +30,7 @@ searchDB <- function(DF, DB, ppm = 5, RT = 0.2, useRT = FALSE){
   Result <- vector(mode = "list", length = length(DF$My.mz))
   pb <- txtProgressBar(min = 0, max = length(DF$My.mz), style = 3)
 
-  for (i in 1:length(DF$mz)) {
+  for (i in 1:length(DF$My.mz)) {
     ## progress bar
     setTxtProgressBar(pb, i)
 
