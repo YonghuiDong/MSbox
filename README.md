@@ -134,6 +134,13 @@ what(1034.556, mode = "+", ppm = 3, useDB = "KEGG") # single m/z value in KEGG d
 what(c(133.014, 191.020), ppm = 10, mode = '-') # batch search
 ```
 
+### 11. Search user's own database based on accurate m/z or both accurate mass and RT
+
+```r
+searchDB(DF, DB, ppm = 5, RT = 0.2, useRT = T) # with RT searching
+searchDB(DF, DB, ppm = 5, RT = 0.2, useRT = F) # without RT searching, default
+```
+
 ## Statistics
 -----------------------
 ## Basic statistics
