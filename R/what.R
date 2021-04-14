@@ -8,9 +8,9 @@
 #' @importFrom utils setTxtProgressBar txtProgressBar
 #' @export
 #' @examples
-#'  a = what2(133.014, mode = '-', ppm = 10)
+#'  a = what(133.014, mode = '-', ppm = 10)
 
-what2 <- function (myMZ, mode = NULL, ppm = 5, useDB = "HMDB") {
+what <- function (myMZ, mode = NULL, ppm = 5, useDB = "HMDB") {
 
   ##(1) input check
   if(is.numeric(myMZ) == FALSE) {stop("warning: mass to charge ratio mz shoule be numeric!")}
