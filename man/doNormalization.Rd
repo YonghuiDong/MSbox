@@ -20,6 +20,6 @@ normalized data matrix
 perform normalization
 }
 \examples{
-dat <- matrix(runif(100*9), ncol = 100, nrow = 10)
+dat <- matrix(runif(100*10), ncol = 100, nrow = 10)
 out <- doNormalization(dat, method = "PQN" )
 }
