@@ -19,7 +19,7 @@ what(myMZ, mode = NULL, ppm = 5, useDB = "HMDB")
 tentative metabolite identification based on m/z value search
 }
 \examples{
- a = what(133.014, mode = '-', ppm = 10)
+a = what(133.014, mode = '-', ppm = 10)
 }
 \author{
 Yonghui Dong

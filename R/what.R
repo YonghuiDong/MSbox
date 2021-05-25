@@ -8,7 +8,7 @@
 #' @importFrom utils setTxtProgressBar txtProgressBar
 #' @export
 #' @examples
-#'  a = what(133.014, mode = '-', ppm = 10)
+#' a = what(133.014, mode = '-', ppm = 10)
 
 what <- function (myMZ, mode = NULL, ppm = 5, useDB = "HMDB") {
 
