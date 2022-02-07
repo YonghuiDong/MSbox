@@ -43,7 +43,7 @@ mz <- function(m, z, caseSensitive = FALSE) {
   #(4) main function
   ## If caseSensitive == T, split the mass formula based on upper case letters and add missing 1.
   if(isTRUE(caseSensitive)) {
-    m <- gsub("([A-Z][a-z]?)(?!\\d)","\\11", m, perl = TRUE)
+    m <- gsub("(?<=[A-Z])(?=[A-Z])|(?<=[a-z])(?=[A-Z])|(?<=[A-Za-z])$", "1", m, perl = TRUE)
   }
   ## format input
   ## split the mass formula
