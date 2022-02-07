@@ -21,9 +21,9 @@ searchDB(DF, DB, ppm = 5, RT = 0.2, useRT = FALSE)
 search in customized database based on accurate m/z and RT
 }
 \examples{
-\dontrun{
-searchDB(DF, DB)
-}
+DF <- cbind.data.frame(mz = c(100.001, 100.1), RT = c(10, 11))
+DB <- cbind.data.frame(mz = c(100.001, 100.1), RT = c(10, 12.1))
+searchDB(DF, DB, ppm = 5, RT = 0.2, useRT = TRUE)
 }
 \author{
 Yonghui Dong

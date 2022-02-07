@@ -56,7 +56,7 @@ getP <- function(x, Group = NULL){
   #colnames(output) <- list_names
   f <- as.factor(Group)
   j <- combn(levels(f), 2)
-  colnames(output) <- paste("pValue_", j[1,], "_vs_", j[2,], sep = '')
+  colnames(output) <- paste0("AdjPvalue_", j[1,], "_vs_", j[2,])
   output
 }
 

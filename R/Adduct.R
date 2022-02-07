@@ -12,8 +12,7 @@ adduct <- function(F, mode = c('+', '-')){
 
   #(1) check input
   F <- toupper(F)
-  if(mode != "+" & mode !="-")
-    {stop("WARNING: ion mode invalid. '+' or '-'.\n")}
+  if(mode != "+" & mode !="-") {stop("WARNING: ion mode invalid. '+' or '-'.\n")}
 
   #(2) main function
    if (mode == '+') {

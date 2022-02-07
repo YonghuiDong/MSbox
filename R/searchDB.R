@@ -9,18 +9,18 @@
 #' @importFrom utils setTxtProgressBar txtProgressBar
 #' @export
 #' @examples
-#' \dontrun{
-#' searchDB(DF, DB)
-#' }
+#' DF <- cbind.data.frame(mz = c(100.001, 100.1), RT = c(10, 11))
+#' DB <- cbind.data.frame(mz = c(100.001, 100.1), RT = c(10, 12.1))
+#' searchDB(DF, DB, ppm = 5, RT = 0.2, useRT = TRUE)
 
 searchDB <- function(DF, DB, ppm = 5, RT = 0.2, useRT = FALSE){
 
   #(1) input check
   ## rename DF and DB
-  names(DF)[names(DF) == "mz"] <- "My.mz"
-  names(DF)[names(DF) == "rt"] <- "My.RT"
-  names(DB)[names(DB) == "mz"] <- "DB.mz"
-  names(DB)[names(DB) == "rt"] <- "DB.RT"
+  names(DF)[toupper(names(DF)) == "MZ"] <- "My.mz"
+  names(DF)[toupper(names(DF)) == "RT"] <- "My.RT"
+  names(DB)[toupper(names(DB)) == "MZ"] <- "DB.mz"
+  names(DB)[toupper(names(DB)) == "RT"] <- "DB.RT"
   if(!'My.mz' %in% colnames(DF)) {stop("Column 'mz' is not found in your data")}
   if(!'DB.mz' %in% colnames(DB)) {stop("Column 'mz' is not found in your database")}
   cat("Searching started...\n")

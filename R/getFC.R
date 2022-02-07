@@ -28,8 +28,8 @@
     ## remove NaN in f_change Matrix
     f_change <- rbind(f_change1, f_change2)
     f_change[is.nan(f_change)] <- 0
-    rownames(f_change) <- c(paste("Fold_", j[1,], "_vs_", j[2,], sep = ''),
-                           paste("Fold_", j[2,], "_vs_", j[1,], sep = ''))
+    rownames(f_change) <- c(paste0("Fold_", j[1,], "_vs_", j[2,]),
+                           paste0("Fold_", j[2,], "_vs_", j[1,]))
     ret <- as.data.frame(t(f_change))
     return(ret)
 }

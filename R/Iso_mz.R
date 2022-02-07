@@ -13,7 +13,6 @@
 Iso_mz <- function(F, iso, z) {
   element <- as.data.frame(sysdata$element)
   #(1) format the database
-  ########################################
   ## replace '()' with '[]'
   element$Symbol <- chartr("()", "[]", element$Symbol)
   ## change the formact i.e. C[13] to [13]C
