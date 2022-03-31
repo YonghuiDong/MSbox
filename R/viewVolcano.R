@@ -24,8 +24,8 @@ viewVolcano <- function(result, compare_group, FC = 2, p = 0.05) {
 
   #(2) get index
   F_id <- paste("Fold_", compare_group[1], "_vs_", compare_group[2], sep = "")
-  P_id1 <- paste("pValue_", compare_group[1], "_vs_", compare_group[2], sep = "")
-  P_id2 <- paste("pValue_", compare_group[2], "_vs_", compare_group[1], sep = "")
+  P_id1 <- paste("AdjPvalue_", compare_group[1], "_vs_", compare_group[2], sep = "")
+  P_id2 <- paste("AdjPvalue_", compare_group[2], "_vs_", compare_group[1], sep = "")
 
   #(3) plot
   ## select which p value colname exist.
@@ -81,7 +81,8 @@ viewVolcano <- function(result, compare_group, FC = 2, p = 0.05) {
 
     final = myplot %>%
       layout(xaxis = list(zeroline = F,  title = "Log2(FC)"),
-             yaxis = list(zeroline = F,  title = "-Log10(p.value)")) %>%
+             yaxis = list(zeroline = F,  title = "-Log10(p.value)"),
+             title = paste("Volcano plot for sample groups:", compare_group[1], "vs", compare_group[2], sep = " ")) %>%
       add_segments(x = log2(FC), xend = log2(FC),
                    y = min(new_iden$p.value), yend = max(new_iden$p.value),
                    line = list(dash = "dash", color = "black"), showlegend = FALSE) %>%
