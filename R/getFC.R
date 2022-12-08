@@ -31,5 +31,5 @@
     rownames(f_change) <- c(paste0("Fold_", j[1,], "_vs_", j[2,]),
                            paste0("Fold_", j[2,], "_vs_", j[1,]))
     ret <- as.data.frame(t(f_change))
-    return(ret)
+    return(round(ret, 2))
 }
