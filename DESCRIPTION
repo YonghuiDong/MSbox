@@ -14,13 +14,9 @@ Imports:
  stringr,
  crayon,
  xml2,
- stats,
- reshape2,
- ggplot2,
- ggfortify,
- plotly
+ stats
 License: GPL-2
 URL: https://github.com/YonghuiDong/MSbox
 BugReports: https://github.com/YonghuiDong/MSbox/issues/new
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.2
