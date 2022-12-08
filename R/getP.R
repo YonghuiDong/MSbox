@@ -13,7 +13,7 @@
 getP <- function(x, Group = NULL){
   cat("\n- Calculating p-values...\n")
   #(1) check input
-  x <- as.data.frame(x) ## here DF class is needed
+  x <- as.data.frame(x)
   Group <- as.factor(Group)
   if(is.null(Group)){stop("Please include group information")}
   if(length(levels(Group)) <= 1){stop("At least two sample groups should be included")}
