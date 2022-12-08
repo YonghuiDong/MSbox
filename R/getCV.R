@@ -3,6 +3,7 @@
 #' known as relative standard deviation (RSD) among different sample groups
 #' @param x sample ion intensity matrix, row sample, column feature.
 #' @param Group sample group information
+#' @importFrom stats sd
 #' @return a dataframe with mean values and cv
 #' @export
 #' @examples
